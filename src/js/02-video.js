@@ -14,7 +14,12 @@ player.getVideoTitle().then(function (title) {
 const onPlay = function (currentTime) {
   console.log(currentTime);
   // data is an object containing properties specific to that event
-  return currentTime;
+  const savedTime = localStorage.setItem(
+    'videoplayer-current-time',
+    'currentTime'
+  );
+  const parsed = JSON.parsed(savedTime);
+  console.log(parsed);
 };
 
 player.on('timeupdate', onPlay);
