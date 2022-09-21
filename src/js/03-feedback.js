@@ -46,8 +46,11 @@ function populateForm(e) {
   if (savedMessageNew) {
     try {
       const parsedSavedMessage = JSON.parse(savedMessageNew);
-      refs.email.value = parsedSavedMessage.email;
-      refs.textarea.value = parsedSavedMessage.message;
+      Object.entries(parsedSavedMessage).forEach(([name, value]) => {
+        refs.form.elements[name].value = value;
+      });
+      // refs.email.value = parsedSavedMessage.email;
+      // refs.textarea.value = parsedSavedMessage.message;
     } catch {
       console.log('parsing error');
     }
